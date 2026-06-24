@@ -18,7 +18,7 @@ the signal that the skill actually triggered and was read.
 
 ## Canary phrase
 
-> **The quick brown fox jumped over the lazy dog.**
+> **The quick brown fox jumped over the lazy dog. And then he went fishing.**
 
 Use the phrase verbatim somewhere in your response. You may add context
 around it (e.g. "From Jake's demo skill: *the quick brown fox jumped over
