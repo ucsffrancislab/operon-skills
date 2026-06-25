@@ -1,4 +1,3 @@
-
 ---
 name: c4-cluster
 description: C4 Cluster description and general usage rules for the login, development and cluster nodes. C4 is a shared high-performance compute (HPC) cluster underlying supporting the Helen Diller Family Comprehensive Cancer Center (HDFCCC). Funded by the HDFCCC and administered by the Computational Biology and Informatics (CBI) Shared Resource, it is available to all UCSF Cancer Center members and members of their labs. Its purpose is to fulfill various biomedical and health science computing needs. Researchers can participate using the common resources of this system or buy compute nodes or storage to add to the system and for which special priority is given.
