@@ -1,6 +1,6 @@
 ---
 name: TCGA-dataset
-description: TCGA (The Cancer Genome Atlas): An NCI-supported repository containing multi-omics data (RNA-seq, DNA methylation, mutation, copy number, clinical survival outcomes) across over 20,000 primary cancer and matched normal samples for 33 cancer types. Reach for this skill whenever a task touches the TCGA glioma cohort (GBM + LGG) on the francislab cluster — covariates, IDH/1p19q/TERT/MGMT/WHO subgroupings, survival outcomes, raw Affy6 genotype, imputed genotype, PGS scores, or AGS-IPS-TCGA harmonized analyses. Use when the user says "TCGA", "TCGA glioma", "TCGA GBM", "TCGA LGG", "GBMLGG", "WTCCC", "Affy6", or references TCGA case_submitter_ids (e.g. TCGA-02-0001). Provides canonical file paths and schema notes so analyses don't drift across sessions.
+description: TCGA (The Cancer Genome Atlas) is an NCI-supported repository containing multi-omics data (RNA-seq, DNA methylation, mutation, copy number, clinical survival outcomes) across over 20,000 primary cancer and matched normal samples for 33 cancer types. Reach for this skill whenever a task touches the TCGA glioma cohort (GBM + LGG) on the francislab cluster — covariates, IDH/1p19q/TERT/MGMT/WHO subgroupings, survival outcomes, raw Affy6 genotype, imputed genotype, PGS scores, or AGS-IPS-TCGA harmonized analyses. Use when the user says "TCGA", "TCGA glioma", "TCGA GBM", "TCGA LGG", "GBMLGG", "WTCCC", "Affy6", or references TCGA case_submitter_ids (e.g. TCGA-02-0001). Provides canonical file paths and schema notes so analyses don't drift across sessions.
 ---
 
 
