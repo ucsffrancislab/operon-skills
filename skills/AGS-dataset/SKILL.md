@@ -1,15 +1,19 @@
 ---
 name: AGS-dataset
-description: The UCSF Adult Glioma Study is a landmark, case-control research initiative aimed at identifying the genetic, developmental, environmental, and immunologic risk factors for gliomas. The study also maps molecular-level tumor markers to help classify these brain cancers into more homogeneous, targeted treatment groups.
+description: The UCSF Adult Glioma Study is a landmark, case-control research initiative aimed at identifying the genetic, developmental, environmental, and immunologic risk factors for gliomas. The study also maps molecular-level tumor markers to help classify these brain cancers into more homogeneous, targeted treatment groups. Reach for this skill whenever a task touches the AGS (Adult Glioma Study) cohort — covariates, IDH/1p19q/survival outcomes, raw or imputed genotype, PGS scores, HLA calls, ancestry PCs, or AGS-IPS-TCGA harmonized analyses. Use when the user says "AGS", "Adult Glioma Study", "AGS-Mayo Oncoarray", "AGS Illumina", "AGS I370", "the glioma cases", or refers to AGSIDs (e.g. AGS40056). Provides canonical file paths on the francislab cluster and schema notes so analyses don't drift across sessions.
 ---
 
-Reach for this skill whenever a task touches the AGS (Adult Glioma Study) cohort — covariates, IDH/1p19q/survival outcomes, raw or imputed genotype, PGS scores, HLA calls, ancestry PCs, or AGS-IPS-TCGA harmonized analyses. Use when the user says "AGS", "Adult Glioma Study", "AGS-Mayo Oncoarray", "AGS Illumina", "AGS I370", "the glioma cases", or refers to AGSIDs (e.g. AGS40056). Provides canonical file paths on the francislab cluster and schema notes so analyses don't drift across sessions.
+
+
+Make this more general to all of our AGS data but then include specific
+
+
 
 # AGS — Adult Glioma Study (UCSF)
 
 UCSF case-control glioma study. Adult glioma patients enrolled at UCSF plus controls. Covariates: demographics, tumor molecular markers (IDH, 1p/19q, TERT, WHO 2016), treatment exposure (dexamethasone, chemo, radiation, surgery), and overall survival.
 
-All paths below are on the cluster (`ssh:c4-log1-dev4`). Files under `/francislab/data1/refs/AGS/` are read-only — do downstream work in your own working directory.
+All paths below are on the C4 cluster (`ssh:c4-log1-dev4`). Files under `/francislab/data1/refs/AGS/` are read-only — do downstream work in your own working directory.
 
 ## Canonical files
 
@@ -18,7 +22,7 @@ All paths below are on the cluster (`ssh:c4-log1-dev4`). Files under `/francisla
 | **Covariates (canonical)** | `/francislab/data1/refs/AGS/Subject_Phenotype_DS_only_AGSID.csv` |
 | **Data dictionary** | `/francislab/data1/refs/AGS/Subject_Phenotype_Meth_Batch1_DD.csv` |
 | **Extended covariates + HLA** | `/francislab/data1/refs/AGS/Cleaned_Covariates_with_HLA.tsv` |
-| **PGS + ancestry PCs** | `/francislab/data1/refs/AGS/merged_pgs_ancestry_PGs.tsv` |
+| **PGS + ancestry PCs** | `/francislab/data1/refs/AGS/merged_pgs_ancestry_PCs.tsv` |
 | **All AGS IDs** | `/francislab/data1/refs/AGS/All_AGS_ids.txt` |
 
 The canonical covariate file is 473 subjects (`AGSID` key), curated and **schema-harmonized with IPS** (the DD covers both: `study_source` 1=AGS, 2=IPS). The extended HLA file is 3508 subjects — the full covariate dump including non-DS subjects — use it when you need HLA calls, serology, or the larger sample set.
@@ -55,6 +59,22 @@ Conventions:
 - I370: `/francislab/data1/raw/20260514-CIDR-AGS-Methylation/AGS_I370_Genotyping_Subjects_VCF_ID.csv` (1268 AGS)
 
 Sets are non-overlapping (0 in both). Always check which platform an AGSID is on before genotype analyses.
+
+##	Imputed PGS
+
+| Platform | Provider | Path |
+|---|---|
+| Illumina I370 | UMich Imputation Server | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20250724-pgs/pgs-i370-hg19/scores.txt.gz` |
+| Mayo OncoArray | UMich Imputation Server | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20250724-pgs/pgs-onco-hg19/scores.txt.gz` |
+| Illumina I370 | Locally | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20260410-compute_PGS_hg19/pgs-calc-scores/i370/scores.txt.gz` |
+| Mayo OncoArray | Locally | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20260410-compute_PGS_hg19/pgs-calc-scores/onco/scores.txt.gz` |
+
+##	Imputed HLA
+
+| Platform | Path |
+|---|---|
+| Illumina I370 | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20250725-hla/hla-i370-hg19/chr6.dose.vcf.gz` |
+| Mayo OncoArray | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20250725-hla/hla-onco-hg19/chr6.dose.vcf.gz` |
 
 ## Schema notes (canonical covariates)
 

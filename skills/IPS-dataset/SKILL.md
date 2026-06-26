@@ -1,16 +1,19 @@
 ---
 name: IPS-dataset
-description: The UCSF Immune Profile Study (IPS) is an ongoing longitudinal observational trial focused on analyzing the blood and immune systems of patients with newly diagnosed or recurrent central nervous system tumors, primarily gliomas. The primary goal is to establish blood-based immune biomarkers to predict patient survival and assess treatment response.
+description: The UCSF Immune Profile Study (IPS) is an ongoing longitudinal observational trial focused on analyzing the blood and immune systems of patients with newly diagnosed or recurrent central nervous system tumors, primarily gliomas. The primary goal is to establish blood-based immune biomarkers to predict patient survival and assess treatment response. Reach for this skill whenever a task touches the IPS (Immune Profiles Study) cohort — covariates, IDH/1p19q/MGMT/survival outcomes, raw or imputed genotype, PGS scores, CIDR/Francis_2520 genotyping, or AGS-IPS-TCGA harmonized analyses. Use when the user says "IPS", "Immune Profiles Study", "CIDR", "the IPS cases", "Francis 2520", "GDA TOP", or references subject_ids in the G### format. Provides canonical file paths on the francislab cluster and schema notes so analyses don't drift across sessions.
 ---
 
-Reach for this skill whenever a task touches the IPS (Immune Profiles Study) cohort — covariates, IDH/1p19q/MGMT/survival outcomes, raw or imputed genotype, PGS scores, CIDR/Francis_2520 genotyping, or AGS-IPS-TCGA harmonized analyses. Use when the user says "IPS", "Immune Profiles Study", "CIDR", "the IPS cases", "Francis 2520", "GDA TOP", or references subject_ids in the G### format. Provides canonical file paths on the francislab cluster and schema notes so analyses don't drift across sessions.
+
+
+Make this more general to all of our IPS data but then include specific
+
 
 
 # IPS — Immune Profiles Study (UCSF)
 
 UCSF glioma cohort with paired immune-profiling assays. Genotyping was performed at CIDR (Center for Inherited Disease Research) on the Illumina GDA TOP array. Many subjects have multiple timepoints (pre-/post-surgery; longitudinal).
 
-All paths below are on the cluster (`ssh:c4-log1-dev4`). Files under `/francislab/data1/refs/IPS/` are read-only — do downstream work in your own working directory.
+All paths below are on the C4 cluster (`ssh:c4-log1-dev4`). Files under `/francislab/data1/refs/IPS/` are read-only — do downstream work in your own working directory.
 
 ## Canonical files
 
@@ -35,6 +38,16 @@ The canonical covariate file is 446 subjects (`subject_id` key) and is **schema-
 
 The `.bed/.bim/.fam` files are symlinks to `francis_2520/Post_Datacleaning/Post_DataCleaning/PLINK_Files/Francis_GDA_TOP_subject_level_long.*` in the same directory. **Build is hg38** (raw delivery from CIDR).
 
+
+## Raw genotype (hg19)
+
+After liftover to hg19, case extraction and merge with the MDS AML controls.
+
+| Platform | PLINK prefix |
+|---|---|
+| Illumina GDA TOP (CIDR) | `/francislab/data1/working/20250813-CIDR/20260320d-merge_with_mdsaml/cidr.{bed,bim,fam}` |
+
+
 ## Imputed genotype
 
 UMich 1000 Genomes hg19 panel — IPS was **lifted to hg19 before imputation** so it sits in the same coordinate space as AGS and TCGA imputed outputs:
@@ -49,7 +62,25 @@ Conventions:
 
 - `/francislab/data1/working/20250813-CIDR/20260320f-impute_genotypes/subjectid_VCFid.csv` (columns: `subject_id`, `VCFid`)
 
-PGS files: `/francislab/data1/working/20250813-CIDR/20260323b-CustomPRSModels/pgs-calc-scores/chr{1..22}.scores.txt` — join on `VCFid`.
+
+## Imputed PGS
+
+| Provider | Path |
+|---|---|
+| UMich Imputation Server | `/francislab/data1/working/20250813-CIDR/20260320g-impute_pgs/pgs-cidr-hg19/scores.txt.gz` |
+| Locally | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20260410-compute_PGS_hg19/pgs-calc-scores/cidr/scores.txt.gz` |
+
+join on `VCFid`
+
+
+## Imputed HLA
+
+| Path |
+|---|
+| `/francislab/data1/working/20250813-CIDR/20260320h-impute_hla/hla-cidr-hg19/chr6.dose.vcf.gz` |
+
+join on `VCFid`
+
 
 ## Schema notes (canonical covariates)
 

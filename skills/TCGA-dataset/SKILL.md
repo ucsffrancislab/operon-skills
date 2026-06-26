@@ -1,18 +1,17 @@
 ---
 name: TCGA-dataset
-description: TCGA (The Cancer Genome Atlas): An NCI-supported repository containing multi-omics data (RNA-seq, DNA methylation, mutation, copy number, clinical survival outcomes) across over 20,000 primary cancer and matched normal samples for 33 cancer types.
+description: TCGA (The Cancer Genome Atlas): An NCI-supported repository containing multi-omics data (RNA-seq, DNA methylation, mutation, copy number, clinical survival outcomes) across over 20,000 primary cancer and matched normal samples for 33 cancer types. Reach for this skill whenever a task touches the TCGA glioma cohort (GBM + LGG) on the francislab cluster — covariates, IDH/1p19q/TERT/MGMT/WHO subgroupings, survival outcomes, raw Affy6 genotype, imputed genotype, PGS scores, or AGS-IPS-TCGA harmonized analyses. Use when the user says "TCGA", "TCGA glioma", "TCGA GBM", "TCGA LGG", "GBMLGG", "WTCCC", "Affy6", or references TCGA case_submitter_ids (e.g. TCGA-02-0001). Provides canonical file paths and schema notes so analyses don't drift across sessions.
 ---
 
-Reach for this skill whenever a task touches the TCGA glioma cohort (GBM + LGG) on the francislab cluster — covariates, IDH/1p19q/TERT/MGMT/WHO subgroupings, survival outcomes, raw Affy6 genotype, imputed genotype, PGS scores, or AGS-IPS-TCGA harmonized analyses. Use when the user says "TCGA", "TCGA glioma", "TCGA GBM", "TCGA LGG", "GBMLGG", "WTCCC", "Affy6", or references TCGA case_submitter_ids (e.g. TCGA-02-0001). Provides canonical file paths and schema notes so analyses don't drift across sessions.
 
-
+Make this more general to all of our TCGA data but then include specific
 
 
 # TCGA glioma (GBM + LGG)
 
 The TCGA glioma cohort assembled on the francislab cluster covers GBM (Glioblastoma multiforme) and LGG (Lower Grade Glioma) cases. Genotyping is from the TCGA Affymetrix 6.0 arrays merged with WTCCC controls.
 
-All paths below are on the cluster (`ssh:c4-log1-dev4`). Files under `/francislab/data1/refs/TCGA/` are read-only — do downstream work in your own working directory.
+All paths below are on the C4 cluster (`ssh:c4-log1-dev4`). Files under `/francislab/data1/refs/TCGA/` are read-only — do downstream work in your own working directory.
 
 ## Canonical files
 
@@ -43,6 +42,20 @@ TCGA was imputed to the same UMich 1000 Genomes hg19 panel as AGS and IPS. The e
 Conventions (consistent across all three cohorts):
 - Chromosome names: `1`, `2`, … (**no** `chr` prefix).
 - INFO field is Minimac4 `R2`; use `R2 ≥ 0.8` as the standard well-imputed cutoff.
+
+## Imputed PGS
+
+| Provider | Path |
+|---|---|
+| UMich Imputation Server | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20250724-pgs/pgs-tcga-hg19/scores.txt.gz` |
+| Locally | `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20260410-compute_PGS_hg19/pgs-calc-scores/tcga/scores.txt.gz` |
+
+## Imputed HLA
+
+| Path |
+|---|
+| `/francislab/data1/working/20250800-AGS-CIDR-ONCO-I370-TCGA/20250725-hla/hla-tcga-hg19/chr6.dose.vcf.gz` |
+
 
 ## Schema notes (canonical covariates)
 
