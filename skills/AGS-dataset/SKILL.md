@@ -3,12 +3,6 @@ name: AGS-dataset
 description: The UCSF Adult Glioma Study is a landmark, case-control research initiative aimed at identifying the genetic, developmental, environmental, and immunologic risk factors for gliomas. The study also maps molecular-level tumor markers to help classify these brain cancers into more homogeneous, targeted treatment groups. Reach for this skill whenever a task touches the AGS (Adult Glioma Study) cohort — covariates, IDH/1p19q/survival outcomes, raw or imputed genotype, PGS scores, HLA calls, ancestry PCs, or AGS-IPS-TCGA harmonized analyses. Use when the user says "AGS", "Adult Glioma Study", "AGS-Mayo Oncoarray", "AGS Illumina", "AGS I370", "the glioma cases", or refers to AGSIDs (e.g. AGS40056). Provides canonical file paths on the francislab cluster and schema notes so analyses don't drift across sessions.
 ---
 
-
-
-Make this more general to all of our AGS data but then include specific
-
-
-
 # AGS — Adult Glioma Study (UCSF)
 
 UCSF case-control glioma study. Adult glioma patients enrolled at UCSF plus controls. Covariates: demographics, tumor molecular markers (IDH, 1p/19q, TERT, WHO 2016), treatment exposure (dexamethasone, chemo, radiation, surgery), and overall survival.

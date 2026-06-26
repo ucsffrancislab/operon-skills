@@ -4,9 +4,6 @@ description: TCGA (The Cancer Genome Atlas) is an NCI-supported repository conta
 ---
 
 
-Make this more general to all of our TCGA data but then include specific
-
-
 # TCGA glioma (GBM + LGG)
 
 The TCGA glioma cohort assembled on the francislab cluster covers GBM (Glioblastoma multiforme) and LGG (Lower Grade Glioma) cases. Genotyping is from the TCGA Affymetrix 6.0 arrays merged with WTCCC controls.

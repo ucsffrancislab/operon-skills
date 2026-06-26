@@ -4,11 +4,6 @@ description: The UCSF Immune Profile Study (IPS) is an ongoing longitudinal obse
 ---
 
 
-
-Make this more general to all of our IPS data but then include specific
-
-
-
 # IPS — Immune Profiles Study (UCSF)
 
 UCSF glioma cohort with paired immune-profiling assays. Genotyping was performed at CIDR (Center for Inherited Disease Research) on the Illumina GDA TOP array. Many subjects have multiple timepoints (pre-/post-surgery; longitudinal).
